@@ -1,6 +1,12 @@
 # 1.File IO
 
-[TOC]
+- [1.File IO](#1file-io)
+  * [1.1 The Difference between standard library functions and system calls](#11-the-difference-between-standard-library-functions-and-system-calls)
+    + [1.1.1 I/O buffer](#111-i-o-buffer)
+  * [1.2 PCB](#12-pcb)
+    + [1.2.1 task_struct](#121-task-struct)
+    + [1.2.2 files_struct](#122-files-struct)
+  * [1.3 open/close](#13-open-close)
 
 
 
