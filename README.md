@@ -1,6 +1,7 @@
 # Unix system programming
 
 ## All tests run under Ubuntu 20.04.1 LTS
+![](unixProgramming/Images/index/my_ubuntu_version.png)
 
 ## contents
 
