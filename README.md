@@ -1,5 +1,7 @@
 # Unix system programming
 
+## All tests run under Ubuntu 20.04.1 LTS
+
 ## contents
 
 ### File IO
