@@ -1,0 +1,65 @@
+Makefile
+目标：依赖（条件）
+	命令
+
+1.
+all:***.c    **.c    **.c    main.c
+	gcc ***.c    **.c    **.c  main.c   -o   app
+
+
+2.
+app:***.o   **.o   ***.o   main.o                                                    自上向下建立关系树
+	gcc ***.o   **.o   ***.o   main.o  -o app
+***.o :***.c						自下向上执行命令
+	gcc -c ***.c
+**.o:***.c
+	gcc -c **.c
+***.o:***.c
+	gcc -c ***.c
+main.o:main.c
+	gcc -c main.c
+
+clean:
+	-rm -f *.o
+test:
+	$echo "hello"
+
+
+自上向下建立关系树，自下向上执行命令
+按照更新时间来编译
+
+
+
+
+3.
+$@表示目标
+$^表示所有依赖
+$<表示依赖中的第一个
+//obj=***.o   **.o   ***.o   main.o
+src=$(wildcard *.c)          //找到当前目录下所有以.c结尾的文件
+obj=$(patsubst %.c,%.o,$(src))        //将src中所有的.c文件替换为.o文件，文件名替换
+//app:$(obj)
+//	gcc $(obj) -o app
+target=app
+$(target):$(obj)
+	gcc $^ -o $@
+
+%.o:%.c
+	gcc -c  $< -o $@                //$< =%.c  	 $@=%.o 
+
+
+
+4.
+CPPFLAGS= -Iinclude                                          	预处理器标志,包含什么头文件
+CFLAGS=-g -Wall					编译的时候参数
+LDFLAGS=-L../lib -lymcalc				加载时候的参数
+CC=gcc 					编译器是什么
+
+src=$(wildcard *.c)
+obj=$(patsubst %.c,%.o,$(src))
+target=app
+$(target):$(obj)
+	$(CC) $^    $(LDFLAGS)-     o $@
+
+%.o:%.c
+	$(CC) -c   $<    $(CFLAGS)     $(CPPFLAGS)     -o    $@
