@@ -30,7 +30,7 @@ int main()
   struct msgbuf msg_snd, msg_rcv;
   msqid = msgget(key, IPC_CREAT | IPC_EXCL | 0664);
 
-  pid_t pid = fork();
+  pid_t pid=fork();
   if (pid==0) {
     while(1) {
       msg_snd.mtypes = 100;
